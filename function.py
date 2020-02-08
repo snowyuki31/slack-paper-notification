@@ -21,13 +21,13 @@ def lambda_handler(event, context):
 
     # Form all entities into string messages and push them to SQS
     for e in response_body['entities']:
-        message = "*Title* : {}\n*Journal* : {}\n*URL* : {}".format(e['Ti'],e['VFN'],e['S'][0]['U'])
+        message = "*Title* : {}\n*Journal* : {}\n*URL* : {}".format(e['Ti'],e['VFN'],e['S'][0]['U']) ## message style
         queue.send_message(MessageBody = message, MessageGroupId = 'group')
 
     # Pop one message out from SQS and send it to Slack
     messages = queue.receive_messages()
     if  len(messages) != 0:
-        message = messages[0]
+        message = messages[0] ## How many items a day you need to be notified
         post_slack(message.body)
         message.delete()
 
@@ -39,7 +39,7 @@ def lambda_handler(event, context):
 # Send POST request to WebHook
 def post_slack(message):
     send_data = {
-        "text" : message,
+        "text" : message, ## setting for the Slack notifier
     }
     send_text = "payload=" + json.dumps(send_data)
 
@@ -56,7 +56,7 @@ def post_slack(message):
 def search_paper():
     api_key = "**API KEY**" ##### FILL HERE!
     dt_now = str(datetime.date.today())
-    query = "And(W='deep',W='learning',D='{}')".format(dt_now)
+    query = "And(W='deep',W='learning',D='{}')".format(dt_now) ## Query for paper searching
     url = "https://api.labs.cognitive.microsoft.com/academic/v1.0/evaluate?"+"expr="+query+"&attributes=Ti,S,VFN&count=20"
 
     request = urllib.request.Request(
