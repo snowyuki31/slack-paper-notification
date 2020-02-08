@@ -1,4 +1,4 @@
-# New Paper Notification Tool working on AWS Lambda
+# Paper Notification Tool working on AWS Lambda
 
 This is a function for AWS lambda to search new papers everyday on Microsoft Academic, fetch them to AWS SQS and send notifications to Slack.
 
