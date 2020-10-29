@@ -6,7 +6,7 @@ For detail, please refer to this page https://qiita.com/snowyuki31/items/5c46b78
 
 # What you must add to the code
 
-"##### FILL HERE!" 
+You must add following items to where '##### FILL HERE!' is written inside 'function.py'.
 
 1. FIFO queue name on AWS SQS
 
@@ -14,7 +14,9 @@ For detail, please refer to this page https://qiita.com/snowyuki31/items/5c46b78
 
 3. API KEY for Academic Knowledge API / Academic Search API
 
-# What you might want to change in the code (## ~~~~ )
+# What you might want to change in the code
+
+You can customize following settings by changing codes commented with '##'.
 
 1. Messaging style
 
